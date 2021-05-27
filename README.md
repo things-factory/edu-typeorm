@@ -1,23 +1,24 @@
 # 1. Example how to use TypeORM with TypeScript
 
+## 1.1. setup Project
 1. clone repository 
 2. run `yarn install`
 3. edit `ormconfig.json` and change your database configuration (you can also change a database type, but don't forget to install specific database drivers)
 4. run `npm start`
 
-## 1.1. How to use CLI?
+## 1.2. How to use CLI?
 
 1. install `typeorm` globally: `npm i -g typeorm`
 2. run `typeorm -h` to show list of available commands
 
 
-## 1.2. start
+## 1.3. 설치
 
-### 1.2.1. npm 패키지를 설치 :
+### 1.3.1. npm 패키지를 설치 :
 
    `npm install typeorm --save`
 
-### 1.2.2. `reflect-metadata`를 설치해야합니다 :
+### 1.3.2. `reflect-metadata`를 설치해야합니다 :
 
    `npm install reflect-metadata --save`
 
@@ -25,11 +26,11 @@
 
    `import "reflect-metadata";`
 
-### 1.2.3. node설치가 필요할 수도 있습니다:
+### 1.3.3. node설치가 필요할 수도 있습니다:
 
    `npm install @types/node --save`
 
-### 1.2.4. 데이터베이스 드라이버를 설치하세요:
+### 1.3.4. 데이터베이스 드라이버를 설치하세요:
 
    - **MySQL**이거나 **MariaDB**의 경우
 
@@ -76,7 +77,7 @@
    사용할 데이터베이스에 따라 이중에서 _하나만_ 설치하세요.
 
 
-### 1.2.5. TypeScript 설정
+### 1.3.5. TypeScript 설정
 
 타입스크립트 버전이 **3.3**보다 높은지 확인하고, `tsconfig.json`에서 다음 설정을 사용하도록 했는지 확인하세요 :
 
@@ -87,7 +88,7 @@
 
 컴파일러 옵션의 `lib` 섹션에서 `es6`을 사용하도록 설정하거나, `@types`에서 `es6-shim`을 설치해야 할 수도 있습니다.
 
-## 1.3. 빠른 시작
+## 1.4. 빠른 시작
 
 TypeORM을 시작하는 가장 빠른 방법은 CLI 커맨드를 사용하여 시작 프로젝트를 만드는 것입니다. 빠른 시작은 Nodejs 애플리케이션에서 TypeORM을 사용할때만 작동
 
@@ -163,13 +164,13 @@ npm start
 > `typeorm init --name MyProject --database mysql --express` 명령어를 실행하면 express가 설치된 프로젝트를 생성할 수 있습니다.
 
 
-## 1.4. connection
+## 1.5. connection
 
 - [메인 API](#메인-api)
 - [`Connection` API](#connection-api)
 - [`ConnectionManager` API](#connectionmanager-api)
 
-### 1.4.1. 메인 API
+### 1.5.1. 메인 API
 
 - `createConnection()` - 새 connection을 생성하고 글로벌 connection manager 에 등록합니다. connection 옵션을 생략하면 `ormconfig` 파일이나 환경변수에서 connection 옵션을 읽어옵니다.
 
@@ -280,7 +281,7 @@ const blogRepository = getMongoRepository(Blog, 'secondary-connection');
 // 이제 secondary connection의 manager 메소드를 사용할 수 있습니다.
 ```
 
-### 1.4.2. `Connection` API
+### 1.5.2. `Connection` API
 
 - `name` - Connection 이름. 이름없는 connection을 만들었을 경우 그 connection의 이름은 "default"와 같습니다. 다중 connection과 함께 작업하거나 `getConnection(connectionName: string)` 이 호출될 때 사용합니다.
 
@@ -451,7 +452,7 @@ await queryRunner.connect();
 await queryRunner.release();
 ```
 
-### 1.4.3. `ConnectionManager` API
+### 1.5.3. `ConnectionManager` API
 
 - `create` - 새로운 connection을 만들어 manager에 등록합니다.
 
@@ -481,9 +482,9 @@ if (connectionManager.has('default')) {
 }
 ```
 
-## 1.5. entity
+## 1.6. entity
 
-### 1.5.1. 모델(Model) 생성
+### 1.6.1. 모델(Model) 생성
 
 데이터베이스 작업은 테이블 생성에서부터 시작됩니다. 어떻게 TypeORM이 테이블을 만들도록 할수있을까요? 바로 모델을 통하는 것입니다. 앱의 모델은 데이터베이스 테이블과 일맥상통합니다.
 
@@ -502,7 +503,7 @@ export class Photo {
 
 그리고 당신은 데이터베이스에 사진을 저장하길 원합니다. 그 데이터베이스에 사진을 저장하려면 먼저 데이터베이스 테이블이 필요하며, 데이터베이스 테이블은 _entites_ 로 정의된 모델의 경우에만 생성됩니다.
 
-### 1.5.2. 엔티티(entity) 생성
+### 1.6.2. 엔티티(entity) 생성
 
 _entity_ 는 `@Entity` 데코레이터가 달린 모델입니다. 데이터베이스 테이블은 이런 모델에 대하여 생성됩니다. TypeORM을 사용하여 entity와 작업하는 경우, 불러오기/삽입/업데이트/삭제 및 다른 작업을 어디서나 수행 할 수 있습니다.
 
@@ -524,7 +525,7 @@ export class Photo {
 
 이제 `Photo` 엔티티에 대한 데이터베이스 테이블이 생성되었으며 앱의 어느곳에서나 사용 할 수 있습니다. 우리는 데이터베이스 테이블을 만들었습니다. 하지만 열(columns)없이 어떻게 테이블이 존재한다고 말할 수 있을까요? 테이블에 대하여 열을 몇 개 만들어 봅시다.
 
-### 1.5.3. 테이블 열(columns) 추가
+### 1.6.3. 테이블 열(columns) 추가
 
 데이터베이스 열을 추가하려면, 열로 만들고 싶은 엔티티의 속성에 `@Column` 데코레이터를 달아주면 됩니다.
 
@@ -557,7 +558,7 @@ export class Photo {
 
 우리는 데이터베이스 테이블에 열을 추가했지만, 아직 한가지 남은게 있습니다. 각 데이터베이스 테이블에는 기본 키를 가진 열이 필요합니다.
 
-### 1.5.4. 기본 열 만들기
+### 1.6.4. 기본 열 만들기
 
 각 엔티티는 기본 키를 가진 열이 하나 이상 `존재해야합니다`. 이는 필요조건이며 반드시 지켜야합니다. 열을 기본 키로 바꾸려면 `@PrimaryColumn` 데코레이터를 사용해야 합니다.
 
@@ -586,7 +587,7 @@ export class Photo {
 }
 ```
 
-### 1.5.5. 자동 생성 열 만들기
+### 1.6.5. 자동 생성 열 만들기
 
 이제, 자동으로 생성되는 id 열(auto-increment / sequence / serial / generated identity column 들과 같은 이름으로 알려진)을 만들고 싶다고 가정해봅시다 . 그렇게 하려면 `@PrimaryColumn` 데코레이터를 `@PrimaryGeneratedColumn` 데코레이터로 변경해야 합니다:
 
@@ -615,7 +616,7 @@ export class Photo {
 }
 ```
 
-### 1.5.6. 열 데이터 타입
+### 1.6.6. 열 데이터 타입
 
 다음으로, 데이터 타입을 수정해봅시다. 기본적으로, string은 varchar(255)와 유사한 타입으로 매핑됩니다 (데이터베이스 유형에따라 달라질 수 있습니다). Number는 interger랑 유사한 타입으로 매핑됩니다 (데이터베이스 유형에따라 달라질 수 있습니다). 우리는 열들이 varchar나 interger로 한정되는것을 원하지 않습니다. 올바른 데이터 타입을 설정해봅시다:
 
@@ -649,7 +650,7 @@ export class Photo {
 데이터베이스마다 열의 타입이 다릅니다. 데이터베이스가 지원하는 모든 타입을 사용할 수 있습니다. 지원하는 열의 타입에 대한 더 많은 정보는
 [여기](./src/docs/entity/entities.md#열-타입)를 참조하세요.
 
-### 1.5.7. 데이터베이스 연결 만들기
+### 1.6.7. 데이터베이스 연결 만들기
 
 이제 엔티티가 생성되면 `index.ts`(또는 `app.ts`) 파일을 만들고 connection을 설정합시다.
 
@@ -683,7 +684,7 @@ createConnection({
 
 `synchronize`를 설정하면 애플리케이션이 실행할때마다 엔티티와 데이터베이스가 동기화됩니다. (migration)
 
-### 1.5.8. 디렉토리에서 모든 엔티티 불러오기
+### 1.6.8. 디렉토리에서 모든 엔티티 불러오기
 
 나중에 엔티티를 더 많이 만들면, 계속해서 connection 설정에 엔티티를 추가해줘야 합니다. 이는 매우 불편하므로, 대신에 모든 엔티티가 연결되고, connection에 사용할 디렉토리를 지정할 수 있습니다:
 
@@ -708,7 +709,7 @@ createConnection({
 
 그러나 이 방법에 주의하세요. `ts-node`를 사용중이라면 `.ts`파일의 경로를 대신 지정 해야합니다. `outDir`을 사용중이라면 outDir 디렉토리 내의 `.js`파일의 경로를 지정해야합니다. `outDir`을 사용중이며 엔터티를 제거하거나 이름을 변경할 때는 outDir 디렉토리를 지우고 프로젝트를 다시 컴파일 하세요. 원본 `.ts`파일을 제거할 때 컴파일 된 `.js`버전이 디렉토리에서 제거되지않고 outDir 디렉토리에 존재하기 때문에 TypeORM에 의해 로드 됩니다.
 
-### 1.5.9. 애플리케이션 실행
+### 1.6.9. 애플리케이션 실행
 
 이제 `index.ts`를 실행하면 데이터베이스와의 연결이 초기화되고 photos 테이블이 생성됩니다.
 
@@ -725,7 +726,7 @@ createConnection({
 +-------------+--------------+----------------------------+
 ```
 
-### 1.5.10. 데이터베이스 생성 및 사진 삽입
+### 1.6.10. 데이터베이스 생성 및 사진 삽입
 
 이제 새 사진을 만들어 데이터베이스에 저장해보겠습니다:
 
@@ -750,14 +751,17 @@ createConnection(/*...*/)
 ```
 
 엔티티가 저장되면 새로 생성된 ID를 얻을 수 있습니다. `save` 메소드는 전달한 것과 똑같은 객체를 반환합니다. 이때 새로운 객체가 아니라 "id"를 바꿔서 반환합니다.
-## 1.6. subscribers
 
-## 1.7. abstract table
 
-## 1.8. pagination
+## 1.7. c/u/d && transaction manager
+## 1.8. subscribers
 
-## 1.9. entity listeners
+## 1.9. abstract table
 
-## 1.10. relations
+## 1.10. pagination
 
-## 1.11. tree
+## 1.11. entity listeners
+
+## 1.12. relations
+
+## 1.13. tree
