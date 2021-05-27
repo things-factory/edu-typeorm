@@ -1,0 +1,3 @@
+[submodule "typeorm-kr"]
+	path = typeorm-kr
+	url = https://github.com/sanggulee-maasasia/typeorm_kr.git

@@ -1,6 +1,19 @@
-import {createConnection} from "typeorm";
+import {ConnectionOptions, createConnection} from "typeorm";
 import {Post} from "./entity/Post";
 import {Category} from "./entity/Category";
+
+const options: ConnectionOptions = {
+    "name": "sap",
+    "type": "sap",
+    "host": "192.168.56.102",
+    "port": 39015,
+    "username": "SYSTEM",
+    "password": "MySuperHanaPwd123!",
+    "database": "HXE",
+    "logging": true,
+    synchronize: true,
+    entities: [Post]
+};
 
 // connection settings are in the "ormconfig.json" file
 createConnection().then(async connection => {
